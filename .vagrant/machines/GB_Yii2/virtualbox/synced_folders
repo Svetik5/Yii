@@ -1,0 +1,1 @@
+{"virtualbox":{"/data/mysite.local/app":{"create":true,"owner":"vagrant","group":"www-data","guestpath":"/data/mysite.local/app","hostpath":"C:/VM/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/VM","disabled":false,"__vagrantfile":true}}}
