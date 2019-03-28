@@ -2,6 +2,19 @@
 /**Created by PhpStorm...
  *@var $model \app\models\Activity
  */
+use yii\bootstrap\Html;
+
+$array=['1'=>'val1', 'two'=>['tr'=>'value sub']];
+$db=[['id'=>2, 'name'=>'val1'],['id'=>3,'name'=>'val2']];
+
+  echo \yii\helpers\ArrayHelper::getValue($array, '1').'<br/>';
+  echo \yii\helpers\ArrayHelper::getValue($array, 'two.tr');
+
+  $new_db=\yii\helpers\ArrayHelper::map($db,'id', function ($value){
+      return \yii\helpers\ArrayHelper::getValue($value, 'name').'1';
+  });
+  print_r($new_db);
+
 ?>
 <div class="row">
     <div class="col-md-6">
@@ -15,6 +28,7 @@
                 'method' => 'POST',
      //           'enableAjaxValidation'=> true,
         ]);?>
+        <?=yii\helpers\Html::input('type','name_in','123', ['class'=>'form-control']); ?>
 
         <?=$form->field($model, 'title');?>
         <?=$form->field($model,'discription')->textarea();?>

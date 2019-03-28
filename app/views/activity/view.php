@@ -8,7 +8,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <p>Название:<strong><?=$model->title?></strong></p>
-        <p><img width="150" src="/images/<?=$model->file?>" </p>
+        <?=yii\helpers\Html::tag('p', 'Описание'. $model->discription)?>
+        <p>Название:<strong><?=yii\helpers\Html::encode($model->title) ?></strong></p>
+        <p><?=yii\helpers\Html::img('/images/'.$model->file,['width'=>150])?></p>
     </div>
 </div>
