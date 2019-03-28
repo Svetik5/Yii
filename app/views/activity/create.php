@@ -8,7 +8,7 @@
 
         <?//=Yii::getAlias('@app')?>
 
-         <?=$name?>
+         <?//=$name?>
 
         <?php $form=\yii\bootstrap\ActiveForm::begin([
                 'id' => 'activity-create',
@@ -29,6 +29,7 @@
         <div class="form-group">
         <button type="submit">Сохранить</button>
         </div>
+       <?=$form->field($model, 'file')->fileInput()?>
     <?php $form=\yii\bootstrap\ActiveForm::end(); ?>
     </div>
 </div>

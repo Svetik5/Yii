@@ -31,13 +31,15 @@ class Activity extends Model
 
   public $use_notification;
 
+  public $file;
+
   protected static $repeat_types = [
     0 => 'Без повтора',
     1 => 'Ежедневно',
     2 => 'Еженедельно',
     3 => 'Ежемесячно',
-    4 => 'Ежегодно'
-  ];
+4 => 'Ежегодно'
+];
 
   public function beforeValidate()
   {
@@ -69,6 +71,7 @@ class Activity extends Model
         ['email', 'required', 'when' => function($model ){
           return $model->use_notification==1?true:false;
         }],
+          ['file','file','extensions' => ['jpg','png'],'maxFiles' => 10],
       //  ['title','notAdmin'],
           ['title',NotAdminRule::class],
         ['repeat_type', 'in', 'range' => array_keys(self::$repeat_types)]

@@ -11,6 +11,7 @@ namespace app\components;
 
 use app\models\Activity;
 use yii\base\Component;
+use yii\web\UploadedFile;
 
 class ActivityComponent extends Component
 {
@@ -33,16 +34,16 @@ class ActivityComponent extends Component
         /** @var Activity $model */
 
         if ($model->load($post)) {
-
-           // $model->file = UploadedFile::getInstance($model, 'file');
+            $model->file = UploadedFile::getInstance($model, 'file');
             if ($model->validate()) {
-              //  $comp = \Yii::createObject(['class' => FileServiceComponent::class]);
-              //  if (!empty($file = $comp->saveUploadedFile($model->file))) {
-             //       $model->file = basename($file);
+
+                $comp = \Yii::createObject(['class' => FileServiceComponent::class]);
+                if (!empty($file = $comp->saveUploadedFile($model->file))) {
+                    $model->file = basename($file);
                 }
                 return true;
             }
-
+        }
 return false;
 
 }

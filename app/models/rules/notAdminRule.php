@@ -13,9 +13,10 @@ use yii\validators\Validator;
 
 class notAdminRule extends Validator
 {
-public function validateAttribute($model, $attribute)
-{
-    if($model->$attribute=='admin'){
-        $model->addError($attribute, 'Значение заголовка не должно быть admin');
-}
+    public function validateAttribute($model, $attribute)
+    {
+        if ($model->$attribute=='admin') {
+            $model->addError($attribute, 'Значение заголовка не должно быть admin');
+        }
+    }
 }
