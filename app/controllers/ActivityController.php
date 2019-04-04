@@ -16,8 +16,7 @@ class ActivityController extends BaseController
 {
   public function actions() {
       return [
-          'create'=>['class'=>ActivityCreateAction::class, 'name' => ''],
-          'new'=>['class'=>ActivityCreateAction::class, 'name' => 'Календарь']
+          'create' => ['class' => ActivityCreateAction::class]
 
       ];
   }

@@ -15,8 +15,8 @@ class notAdminRule extends Validator
 {
     public function validateAttribute($model, $attribute)
     {
-        if ($model->$attribute=='admin') {
-            $model->addError($attribute, 'Значение заголовка не должно быть admin');
+        if($model->$attribute=='admin'){
+            $model->addError($attribute,'Значения заголовка не должно быть admin');
         }
     }
 }

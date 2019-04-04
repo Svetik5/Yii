@@ -12,19 +12,24 @@ namespace app\controllers\action;
 use app\components\ActivityComponent;
 use app\models\Activity;
 use yii\base\Action;
-use yii\web\View;
+use yii\helpers\Html;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 class ActivityCreateAction extends Action
 {
-    public $name;
 
  public function run()
  {
 
      /** @var ActivityComponent $comp */
+
      $comp = \Yii::$app->activity;
+
      /** @var Activity $model */
+
      $model = $comp->getModel();
+
      if (\Yii::$app->request->isPost) {
          if(\Yii::$app->request->isAjax){
              \Yii::$app->response->format=Response::FORMAT_JSON;
