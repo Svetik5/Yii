@@ -10,6 +10,7 @@ namespace app\assets\Base;
 
 
 use yii\web\Controller;
+use yii\web\HttpException;
 
 class BaseController extends Controller
 {
@@ -22,5 +23,11 @@ class BaseController extends Controller
         //\Yii::$app->session->setFlash('success', $url);
         return $result;
     }
-
+ public function beforeAction($action)
+ {
+     if(\Yii::$app->user->isGuest){
+         throw new HttpException(401,'Need authorization');
+     }
+     return parent::beforeAction($action);
+ }
 }

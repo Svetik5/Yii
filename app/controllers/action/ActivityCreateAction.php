@@ -13,6 +13,7 @@ use app\components\ActivityComponent;
 use app\models\Activity;
 use yii\base\Action;
 use yii\helpers\Html;
+use yii\web\HttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 
@@ -21,7 +22,9 @@ class ActivityCreateAction extends Action
 
  public function run()
  {
-
+        if(!\Yii::$app->rbac->canCreateActivity()){
+            throw new HttpException(403,'Not access create activity');
+        }
      /** @var ActivityComponent $comp */
 
      $comp = \Yii::$app->activity;
