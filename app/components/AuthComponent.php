@@ -58,6 +58,8 @@ class AuthComponent extends Component
         if(!$model->save()){
             return false;
         }
+
+        //todo assign user role $model->id;
         return true;
     }
     private function generateAuthKey(){
