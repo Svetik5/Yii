@@ -10,11 +10,20 @@ namespace app\models;
 
 
 use app\assets\base\BaseModel;
+use app\behaviors\DateCreatedBehavior;
+use app\behaviors\LogMyBehavior;
 use app\models\rules\NotAdminRule;
 
 class Activity extends ActivityBase
 {
-
+   public function behaviors()
+    {
+        return [
+            ['class' => DateCreatedBehavior::class,
+              'attribute_name' => 'date_created' ],
+            LogMyBehavior::class
+        ];
+    }
 
     public $file;
 

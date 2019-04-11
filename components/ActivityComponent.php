@@ -6,6 +6,7 @@
  * Time: 23:41
  */
 namespace app\components;
+use app\behaviors\LogMyBehavior;
 use app\models\Activity;
 use yii\base\Component;
 use yii\validators\EmailValidator;
@@ -13,6 +14,14 @@ use yii\web\UploadedFile;
 class ActivityComponent extends Component
 {
     public $model_class;
+    const EVENT_LOAD_IMAGES='load_imaged';
+    public function behaviors()
+    {
+        return [
+            LogMyBehavior::class
+        ];
+    }
+
     public function init()
     {
         parent::init();
@@ -32,6 +41,8 @@ class ActivityComponent extends Component
             if ($model->validate()) {
                 $comp=\Yii::createObject(['class'=>FileServiceComponent::class]);
                 if(!empty($file=$comp->saveUploadedFile($model->file))){
+                    $this->trigger(self::EVENT_LOAD_IMAGES);
+                  //  $this->on(self::EVENT_LOAD_IMAGES,function ())
                     $model->file=basename($file);
                 }
                 return true;

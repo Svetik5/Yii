@@ -14,7 +14,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'as datecreated'=>['class'=>\app\behaviors\LogMyBehavior::class],
     'components' => [
+        'formatter'=>[
+        'dateFormat' => 'd.m.Y'
+        ],
         'auth'=>['class'=>\app\components\AuthComponent::class],
         'activity' => ['class'=>\app\components\ActivityComponent::class,
            'model_class' => \app\models\Activity::class
