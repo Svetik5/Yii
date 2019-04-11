@@ -30,3 +30,4 @@
         <?php endforeach;?>
     </div>
 </div>
+<?=app\widgets\daotable\DaoTableWidgets::widget(['activities' => $users]);?>
