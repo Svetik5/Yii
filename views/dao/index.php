@@ -30,4 +30,7 @@
         <?php endforeach;?>
     </div>
 </div>
+<?php if ($this->beginCache('key22',['duration'=>15])):?>
 <?=app\widgets\daotable\DaoTableWidgets::widget(['activities' => $users]);?>
+<?php $this->endCache();?>
+<?php endif; ?>

@@ -7,15 +7,34 @@ namespace app\controllers;
 
 
 use app\components\DaoComponent;
+use yii\filters\PageCache;
 use yii\web\Controller;
 
 class DaoController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            ['class' => PageCache::class,'only' => ['index'],'duration' => 6]
+        ];
+    }
 
     /**
      * @return string
      */
     public function actionIndex(){
+
+       // \Yii::$app->cache->set('key1','value1');
+        $val=\Yii::$app->get('key1');
+        $val=\Yii::$app->cache->getOrSet('key2',function (){
+  //          return 'val2';
+        });
+        \Yii::$app->cache->flush();
+
+        echo $val;
+
+        exit;
+
 
         /** @var DaoComponent $copm */
         $copm=\Yii::createObject(['class'=>DaoComponent::class]);

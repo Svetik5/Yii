@@ -5,6 +5,8 @@ namespace app\components;
 
 
 use yii\base\Component;
+use yii\caching\DbDependency;
+use yii\caching\TagDependency;
 use yii\db\Query;
 use yii\log\Logger;
 
@@ -42,8 +44,11 @@ class DaoComponent extends Component
             ->one();
     }
     public function getCountActivity(){
+     //   TagDependency::invalidate(\Yii::$app->cache, 'tag1');
         $query=new Query();
         return  $query->from('activity')->select('count(id) as cnt')
+           // ->cache(7,new DbDependency(['sql'=> 'select max (id) from activity']))->all()
+               ->cache(10,new TagDependency(['tags' => 'tag1']))
             ->scalar();
     }
     public function getReaderActivity(){

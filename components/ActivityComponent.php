@@ -33,6 +33,11 @@ class ActivityComponent extends Component
     {
         return new $this->model_class;
     }
+
+    public function getActivityForNotification($from){
+
+    }
+
     public function createActivity(&$model, $post): bool
     {
         /** @var Activity $model */
