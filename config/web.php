@@ -33,6 +33,8 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+           // 'class' => 'yii\caching\MemCache',
+       //     'useMemcached' => true
         ],
         'user' => [
             'identityClass' => 'app\models\Users',
@@ -43,10 +45,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'enableSwiftMailerLogging' => true,
+            'transport' => [
+                'class' => 'Swift_SmptTransport',
+                'host' => 'smpt.yandex.ru',
+                'username' => 'cveto4ek575@yandex.ru',
+                'password' => '30011990s',
+                'port' => '587',
+                'encryption' => 'tls'
+            ]
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

@@ -30,6 +30,18 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'enableSwiftMailerLogging' => true,
+            'transport' => [
+                'class' => 'Swift_SmptTransport',
+                'host' => 'smpt.yandex.ru',
+                'username' => 'cveto4ek575@yandex.ru',
+                'password' => '30011990s',
+                'port' => '587',
+                'encryption' => 'tls'
+            ]
+            ],
     ],
     'params' => $params,
     /*
