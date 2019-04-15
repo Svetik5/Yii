@@ -27,6 +27,10 @@ class Activity extends ActivityBase
 
     public $file;
 
+   public static $repeat_types=[1,2,3];
+
+   public $repeat_email;
+
     public function beforeValidate()
     {
         if($this->date_start){
