@@ -34,7 +34,6 @@ print_r($new_db);
         <?= $form->field($model, 'title') ?>
         <?= $form->field($model, 'description')->textarea() ?>
         <?= $form->field($model, 'date_start'); ?>
-        <?= $form->field($model, 'repeat_type')->dropDownList($model->getRepeatTypes()) ?>
         <?= $form->field($model, 'is_blocked')->checkbox() ?>
         <?= $form->field($model, 'use_notification')->checkbox(); ?>
         <?= $form->field($model, 'email', [
